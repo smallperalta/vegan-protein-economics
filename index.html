@@ -14,7 +14,7 @@
 
 <h1>Vegan Protein Economics</h1>
 <p>Protein density vs price (with categories)</p>
-<p class="subtitle">Bubble size reflects protein content per 100g</p>
+<p class="subtitle">Bubble size reflects shelf price (€ per kg) — larger = more expensive per kg</p>
 
 <div id="chart"></div>
 
@@ -34,18 +34,20 @@ fetch('data/protein_foods.csv')
     const category = c[1]
     const protein100 = parseFloat(c[5])
     const pricePerProtein = parseFloat(c[6])
-    if(isNaN(protein100) || isNaN(pricePerProtein)) return
+    const pricePerKg = parseFloat(c[4])
+    if(isNaN(protein100) || isNaN(pricePerProtein) || isNaN(pricePerKg)) return
 
     categoriesSet.add(category)
 
     if(!dataByCategory[category]) {
-      dataByCategory[category] = {x:[], y:[], text:[], size:[]}
+      dataByCategory[category] = {x:[], y:[], text:[], size:[], pricePerKg:[]}
     }
 
     dataByCategory[category].x.push(protein100)
     dataByCategory[category].y.push(pricePerProtein)
     dataByCategory[category].text.push(product)
-    dataByCategory[category].size.push(protein100)
+    dataByCategory[category].size.push(pricePerKg)
+    dataByCategory[category].pricePerKg.push(pricePerKg)
   })
 
   const categories = Array.from(categoriesSet)
@@ -64,10 +66,11 @@ fetch('data/protein_foods.csv')
   const avgX = allX.reduce((a,b) => a+b, 0) / allX.length
   const avgY = allY.reduce((a,b) => a+b, 0) / allY.length
 
-  // Scale marker sizes: sqrt scaling so differences are visible but not extreme
-  const minP = Math.min(...allX), maxP = Math.max(...allX)
+  // Scale marker sizes by price_per_kg_eur
+  const allPricePerKg = categories.flatMap(cat => dataByCategory[cat].pricePerKg)
+  const minPPK = Math.min(...allPricePerKg), maxPPK = Math.max(...allPricePerKg)
   function scaleSize(p) {
-    return 10 + 30 * Math.sqrt((p - minP) / (maxP - minP))
+    return 8 + 22 * Math.sqrt((p - minPPK) / (maxPPK - minPPK))
   }
 
   const traces = categories.map((cat, i) => ({
@@ -86,7 +89,9 @@ fetch('data/protein_foods.csv')
     hovertemplate:
       "<b>%{text}</b><br>" +
       "Protein: %{x} g / 100g<br>" +
-      "Price: %{y} € / 100g protein<extra></extra>"
+      "Price: %{y} € / 100g protein<br>" +
+      "Shelf price: €%{customdata} / kg<extra></extra>",
+    customdata: dataByCategory[cat].pricePerKg
   }))
 
   // Category isolation on legend click
