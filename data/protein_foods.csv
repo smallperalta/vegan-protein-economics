@@ -1,4 +1,4 @@
-Product,Category,Package size (g),Protein in package (g),Price per kg (€),Protein per 100g,Price per 100g of protein
+product,category,package_size_g,protein_in_package_g,price_per_kg_eur,protein_per_100g,price_per_100g_protein
 Chickpeas - GoGreen Luomu Kikherneet,Legumes,380,26.22,6.5,6.9,9.4
 Dry red lentils - GoGreen,Legumes,400,104,5,26,1.9
 Dry Green Lentils,Legumes,400,104,7.9,26,3
