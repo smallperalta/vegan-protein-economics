@@ -2,37 +2,34 @@ fetch('data/protein_foods.csv')
 .then(response => response.text())
 .then(csv => {
 
-  const rows = csv.split('\n').slice(1)  // skip headers
+  const rows = csv.split('\n').slice(1)
 
-  const x = [], y = [], labels = [], categories = []
+  const x=[], y=[], labels=[]
 
   rows.forEach(r => {
     if(!r.trim()) return
-
     const c = r.split(';')
 
-    // Parse numbers safely
-    const protein100 = parseFloat(c[5])
-    const pricePerProtein = parseFloat(c[6])
+    // Remove any non-numeric characters just in case
+    const protein100 = parseFloat(c[5].replace(/[^\d.]/g,''))
+    const pricePerProtein = parseFloat(c[6].replace(/[^\d.]/g,''))
 
     if(isNaN(protein100) || isNaN(pricePerProtein)) return
 
     x.push(protein100)
     y.push(pricePerProtein)
     labels.push(c[0])
-    categories.push(c[1])
   })
 
-  console.log(x, y, labels, categories) // debug
+  console.log(x, y, labels)
 
-  // Plotly trace
-  Plotly.newPlot('chart', [{
+  Plotly.newPlot('chart',[{
     x:x,
     y:y,
     text:labels,
     mode:'markers',
     type:'scatter'
-  }], {
+  }],{
     xaxis:{title:"Protein (g per 100g)"},
     yaxis:{title:"Price (€ per 100g protein)"}
   })
