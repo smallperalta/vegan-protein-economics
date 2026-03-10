@@ -1,37 +1,123 @@
+<script>
+
 fetch('data/protein_foods.csv')
 .then(response => response.text())
 .then(csv => {
 
-  const rows = csv.split('\n').slice(1)
+  const rows = csv.split('\n').slice(1)  // skip header
+  const x = [], y = [], labels = [], categoriesArr = []
 
-  const x=[], y=[], labels=[]
+  const dataByCategory = {}
+  const categoriesSet = new Set()
 
   rows.forEach(r => {
     if(!r.trim()) return
+
     const c = r.split(';')
 
-    // Remove any non-numeric characters just in case
-    const protein100 = parseFloat(c[5].replace(/[^\d.]/g,''))
-    const pricePerProtein = parseFloat(c[6].replace(/[^\d.]/g,''))
+    const product = c[0]
+    const category = c[1]
+
+    // Parse numbers
+    const protein100 = parseFloat(c[5])
+    const pricePerProtein = parseFloat(c[6])
 
     if(isNaN(protein100) || isNaN(pricePerProtein)) return
 
-    x.push(protein100)
-    y.push(pricePerProtein)
-    labels.push(c[0])
+    categoriesSet.add(category)
+
+    if(!dataByCategory[category]) dataByCategory[category] = {x:[], y:[], text:[], markerSize:[]}
+
+    dataByCategory[category].x.push(protein100)
+    dataByCategory[category].y.push(pricePerProtein)
+    dataByCategory[category].text.push(product)
+
+    // marker size proportional to protein density
+    dataByCategory[category].markerSize.push(Math.sqrt(protein100)*3)
   })
 
-  console.log(x, y, labels)
+  const categories = Array.from(categoriesSet)
+  console.log("Categories found:", categories)
+  console.log("Data by category:", dataByCategory)
 
-  Plotly.newPlot('chart',[{
-    x:x,
-    y:y,
-    text:labels,
-    mode:'markers',
-    type:'scatter'
-  }],{
-    xaxis:{title:"Protein (g per 100g)"},
-    yaxis:{title:"Price (€ per 100g protein)"}
+  // Define a bright color palette
+  const colors = [
+    '#1f77b4','#ff7f0e','#2ca02c','#d62728','#9467bd',
+    '#8c564b','#e377c2','#7f7f7f','#bcbd22','#17becf'
+  ]
+
+  // Build traces for each category
+  const traces = categories.map((cat, i) => {
+    return {
+      x: dataByCategory[cat].x,
+      y: dataByCategory[cat].y,
+      text: dataByCategory[cat].text,
+      mode: 'markers',
+      type: 'scatter',
+      name: cat,
+      marker: {
+        size: dataByCategory[cat].markerSize,
+        color: colors[i % colors.length],
+        line: {width:1, color:'black'}
+      },
+      visible: true,
+      hovertemplate:
+        "<b>%{text}</b><br>" +
+        "Protein: %{x} g / 100g<br>" +
+        "Price: %{y} € / 100g protein<extra></extra>"
+    }
   })
+
+  // Dropdown filter buttons
+  const buttons = categories.map((cat, i) => {
+    const visibility = categories.map((_, j) => j === i)
+    return {
+      method: 'update',
+      label: cat,
+      args: [{visible: visibility}, {title: `Category: ${cat}`}]
+    }
+  })
+
+  buttons.unshift({
+    method: 'update',
+    label: 'All',
+    args: [{visible: categories.map(_=>true)}, {title: 'Protein density vs price'}]
+  })
+
+  // Layout with axis titles, standoff, reference line
+  const layout = {
+    title: {text:"Protein density vs price", x:0.5},
+    xaxis: {
+      title: {text:"Protein (g per 100g)", standoff:15},
+      zeroline:false
+    },
+    yaxis: {
+      title: {text:"Price (€ per 100g protein)", standoff:15},
+      zeroline:false
+    },
+    shapes: [
+      // horizontal reference line at 5 €/100g protein
+      {
+        type:'line',
+        x0:0, x1:100,
+        y0:5, y1:5,
+        line:{color:'red', width:2, dash:'dash'}
+      }
+    ],
+    hovermode:"closest",
+    updatemenus: [{
+      buttons: buttons,
+      direction: "down",
+      showactive: true,
+      x:1.05,
+      xanchor:"left",
+      y:1
+    }],
+    legend:{x:1.05, y:0.8}
+  }
+
+  Plotly.newPlot('chart', traces, layout)
 
 })
+
+</script>
