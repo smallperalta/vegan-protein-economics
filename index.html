@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vegan Protein Economics</title>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+<h1>Vegan Protein Economics</h1>
+<p>Protein density vs price</p>
+
+<div id="chart"></div>
+
+<script>
+
+fetch('data/protein_foods.csv')
+.then(response => response.text())
+.then(csv => {
+
+const rows = csv.split('\n').slice(1)
+
+const x = []
+const y = []
+const labels = []
+
+rows.forEach(r => {
+
+const c = r.split(',')
+
+labels.push(c[0])
+x.push(parseFloat(c[5]))   // protein per 100g
+y.push(parseFloat(c[4]))   // price per kg
+
+})
+
+Plotly.newPlot('chart',[{
+x:x,
+y:y,
+text:labels,
+mode:'markers',
+type:'scatter'
+}])
+
+})
+
+</script>
+
+</body>
+</html>
