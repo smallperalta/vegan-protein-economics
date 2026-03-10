@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vegan Protein Economics - Minimal Chart</title>
+  <title>Vegan Protein Economics</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <style>
     body { font-family: Arial, sans-serif; margin: 40px; }
@@ -12,48 +12,43 @@
 <body>
 
 <h1>Vegan Protein Economics</h1>
-<p>Protein density vs price (minimal working version)</p>
+<p>Protein density vs price</p>
 
 <div id="chart"></div>
 
 <script>
-fetch('data/protein_foods.csv')
-.then(response => response.text())
-.then(csv => {
+  fetch('data/protein_foods.csv')
+  .then(response => response.text())
+  .then(csv => {
 
-  const rows = csv.split('\n').slice(1)  // skip headers
-  const x = [], y = [], labels = []
+    const rows = csv.split('\n').slice(1)
+    const x = [], y = [], labels = []
 
-  rows.forEach(r => {
-    if(!r.trim()) return
+    rows.forEach(r => {
+      if(!r.trim()) return
+      const c = r.split(';')
+      const protein100 = parseFloat(c[5])
+      const pricePerProtein = parseFloat(c[6])
+      if(isNaN(protein100) || isNaN(pricePerProtein)) return
+      x.push(protein100)
+      y.push(pricePerProtein)
+      labels.push(c[0])
+    })
 
-    const c = r.split(';')  // semicolon-separated CSV
-    const protein100 = parseFloat(c[5])
-    const pricePerProtein = parseFloat(c[6])
+    console.log("x:", x, "y:", y, "labels:", labels)
 
-    if(isNaN(protein100) || isNaN(pricePerProtein)) return
+    Plotly.newPlot('chart',[{
+      x:x,
+      y:y,
+      text:labels,
+      mode:'markers',
+      type:'scatter'
+    }], {
+      xaxis:{title:"Protein (g per 100g)"},
+      yaxis:{title:"Price (€ per 100g protein)"}
+    })
 
-    x.push(protein100)
-    y.push(pricePerProtein)
-    labels.push(c[0])
   })
-
-  console.log("Protein per 100g (x):", x)
-  console.log("Price per 100g protein (y):", y)
-  console.log("Product labels:", labels)
-
-  Plotly.newPlot('chart', [{
-    x: x,
-    y: y,
-    text: labels,
-    mode: 'markers',
-    type: 'scatter'
-  }], {
-    xaxis: {title: "Protein (g per 100g)"},
-    yaxis: {title: "Price (€ per 100g protein)"}
-  })
-
-})
 </script>
 
 </body>
