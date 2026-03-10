@@ -1,4 +1,65 @@
-<!DOCTYPE html>
+<script>
+
+fetch('data/protein_foods.csv')
+.then(response => response.text())
+.then(csv => {
+
+const rows = csv.split('\n').slice(1)
+
+const x = []
+const y = []
+const labels = []
+const categories = []
+
+rows.forEach(r => {
+
+if(!r.trim()) return
+
+const c = r.split(';')
+
+labels.push(c[0])
+categories.push(c[1])
+
+x.push(parseFloat(c[5]))   // protein per 100g
+y.push(parseFloat(c[4]))   // price per kg
+
+})
+
+const trace = {
+x:x,
+y:y,
+text:labels,
+mode:'markers',
+type:'scatter',
+marker:{
+size:12
+},
+hovertemplate:
+"<b>%{text}</b><br>" +
+"Protein: %{x} g / 100g<br>" +
+"Price: %{y} €/kg<extra></extra>"
+}
+
+const layout = {
+
+title:"Protein density vs price",
+
+xaxis:{
+title:"Protein (g per 100g)"
+},
+
+yaxis:{
+title:"Price (€/kg)"
+},
+
+hovermode:"closest"
+}
+
+Plotly.newPlot('chart',[trace],layout)
+
+})
+
+</script><!DOCTYPE html>
 <html>
 <head>
 <title>Vegan Protein Economics</title>
