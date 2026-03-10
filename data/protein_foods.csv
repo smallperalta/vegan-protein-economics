@@ -1,38 +1,38 @@
-Product;Category;Package size (g);Protein in package (g);Price per kg (€);Protein per 100g;Price per 100g of protein
-Chickpeas - GoGreen Luomu Kikherneet;Legumes;380;26.22;6.5;6.9;9.4
-Dry red lentils - GoGreen;Legumes;400;104;5;26;1.9
-Dry Green Lentils;Legumes;400;104;7.9;26;3
-Dry Green Lentils - Impolan kasvitus;Legumes;350;26;12.6;26;4.8
-GoGreen Mustapavut 380g;Legumes;380;28.12;6.7;7.4;9.1
-Elovena kauraisa proteiinigranola;Muesli & granola;300;60;19.7;20;9.9
-Fazer Alku Paahdettu Mysli Metsämarja;Muesli & granola;375;45;13.31;12;11.1
-K-Menu Crunchy Mysli;Muesli & granola;750;67.5;3.45;9;3.8
-SoFine tofu maustamaton luomu;Soy foods;250;32.5;6.72;13;5.2
-Rainbow tofu luomu;Soy foods;200;24;4.85;12;4
-Jalotofu kylmäsavu;Soy foods;300;48;10;16;6.3
-Tofumoon Tempe;Soy foods;250;47.5;11.9;19;6.3
-Gold&Green Delikaura Grillattu tomaatti;Plant meat;230;55.2;14.1;24;5.9
-Gold&Green Härkis kaurajauhis;Plant meat;225;38.25;16.5;17;9.7
-MUU Kasvipohjainen Roast Biif;Plant meat;100;28;32.8;28;11.7
-Makuliha Makukeittiön Kasvislauantai;Plant meat;120;12;19;9;21.1
-MUU Vebablastu;Plant meat;200;50;13.4;25;5.4
-MUU Mehevä Burgerpihvi;Plant meat;200;24;17.95;12;15
-MUU Jauhis kasvispohjainen;Plant meat;280;42;13.18;15;8.8
-Vöner Original Lastu;Plant meat;200;62;19.85;31;6.4
-Hälsans Kök Vegesuikaleet;Plant meat;420;94.5;15.38;22.5;6.8
-Pirkka Vege soijarouhe sitruuna & pippuri;Plant meat;110;13.2;18;12;15
-Peanut Butter;Nuts & seeds;340;90;8.1;26.5;3.1
-Xtra Kuoritut Saksanpähkinät;Nuts & seeds;300;36;14.5;12;12.1
-Coop Maapähkinä Suolaamaton;Nuts & seeds;250;62.5;3.92;25;1.6
-Xtra Cashewpähkinät Natural;Nuts & seeds;500;95;13;19;6.8
-VegeSun Tumma soijarouhe;Textured soy protein;500;265;6.16;53;1.2
-VegeSun Vaalea soijarouhe;Textured soy protein;500;265;7.18;53;1.4
-Alpro Protein milk;Plant dairy;1000;50;3.35;5;6.7
-Alpro High Protein banaani-keksi soijavalmiste;Plant dairy;200;15;8.55;7.5;11.4
-Alpro Protein proteiinivanukas karamelli;Plant dairy;200;20;9.45;10;9.5
-K-Menu pitkäjyväinen riisi;Grain products;1000;75;1.9;7.5;2.5
-Nalle Pikakaurahiutale;Grain products;500;70;3.16;14;2.3
-Oululainen Hapankorppu;Grain products;200;24;9.9;12;8.3
-Vaasan Taika Täysjyväkauraviipaleet;Grain products;550;66;4.07;12;3.4
-Mummon Muusi perunamuusijauhe;Staples;210;12.39;~7.10;5.9;12.03
-Protein powder;Protein supplement;1000;840;22;84;2.6
+Product,Category,Package size (g),Protein in package (g),Price per kg (€),Protein per 100g,Price per 100g of protein
+Chickpeas - GoGreen Luomu Kikherneet,Legumes,380,26.22,6.5,6.9,9.4
+Dry red lentils - GoGreen,Legumes,400,104,5,26,1.9
+Dry Green Lentils,Legumes,400,104,7.9,26,3
+Dry Green Lentils - Impolan kasvitus,Legumes,350,26,12.6,26,4.8
+GoGreen Mustapavut 380g,Legumes,380,28.12,6.7,7.4,9.1
+Elovena kauraisa proteiinigranola,Muesli & granola,300,60,19.7,20,9.9
+Fazer Alku Paahdettu Mysli Metsämarja,Muesli & granola,375,45,13.31,12,11.1
+K-Menu Crunchy Mysli,Muesli & granola,750,67.5,3.45,9,3.8
+SoFine tofu maustamaton luomu,Soy foods,250,32.5,6.72,13,5.2
+Rainbow tofu luomu,Soy foods,200,24,4.85,12,4
+Jalotofu kylmäsavu,Soy foods,300,48,10,16,6.3
+Tofumoon Tempe,Soy foods,250,47.5,11.9,19,6.3
+Gold&Green Delikaura Grillattu tomaatti,Plant meat,230,55.2,14.1,24,5.9
+Gold&Green Härkis kaurajauhis,Plant meat,225,38.25,16.5,17,9.7
+MUU Kasvipohjainen Roast Biif,Plant meat,100,28,32.8,28,11.7
+Makuliha Makukeittiön Kasvislauantai,Plant meat,120,12,19,9,21.1
+MUU Vebablastu,Plant meat,200,50,13.4,25,5.4
+MUU Mehevä Burgerpihvi,Plant meat,200,24,17.95,12,15
+MUU Jauhis kasvispohjainen,Plant meat,280,42,13.18,15,8.8
+Vöner Original Lastu,Plant meat,200,62,19.85,31,6.4
+Hälsans Kök Vegesuikaleet,Plant meat,420,94.5,15.38,22.5,6.8
+Pirkka Vege soijarouhe sitruuna & pippuri,Plant meat,110,13.2,18,12,15
+Peanut Butter,Nuts & seeds,340,90,8.1,26.5,3.1
+Xtra Kuoritut Saksanpähkinät,Nuts & seeds,300,36,14.5,12,12.1
+Coop Maapähkinä Suolaamaton,Nuts & seeds,250,62.5,3.92,25,1.6
+Xtra Cashewpähkinät Natural,Nuts & seeds,500,95,13,19,6.8
+VegeSun Tumma soijarouhe,Textured soy protein,500,265,6.16,53,1.2
+VegeSun Vaalea soijarouhe,Textured soy protein,500,265,7.18,53,1.4
+Alpro Protein milk,Plant dairy,1000,50,3.35,5,6.7
+Alpro High Protein banaani-keksi soijavalmiste,Plant dairy,200,15,8.55,7.5,11.4
+Alpro Protein proteiinivanukas karamelli,Plant dairy,200,20,9.45,10,9.5
+K-Menu pitkäjyväinen riisi,Grain products,1000,75,1.9,7.5,2.5
+Nalle Pikakaurahiutale,Grain products,500,70,3.16,14,2.3
+Oululainen Hapankorppu,Grain products,200,24,9.9,12,8.3
+Vaasan Taika Täysjyväkauraviipaleet,Grain products,550,66,4.07,12,3.4
+Mummon Muusi perunamuusijauhe,Staples,210,12.39,~7.10,5.9,12.03
+Protein powder,Protein supplement,1000,840,22,84,2.6
