@@ -14,7 +14,6 @@
 
 <h1>Vegan Protein Economics</h1>
 <p>Protein density vs price (with categories)</p>
-<p class="subtitle">Bubble size reflects shelf price (€ per kg) — larger = more expensive per kg</p>
 
 <div id="chart"></div>
 
@@ -82,7 +81,7 @@ fetch('data/protein_foods.csv')
     name: cat,
     marker: {
       color: colors[i % colors.length],
-      size: dataByCategory[cat].size.map(scaleSize),
+      //size: dataByCategory[cat].size.map(scaleSize),
       opacity: 0.85,
       line: {width:1, color:'black'}
     },
