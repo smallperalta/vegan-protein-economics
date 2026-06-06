@@ -60,7 +60,7 @@ df = df.dropna(subset=["product", "category", "protein_per_100g", "price_per_kg"
 # ---------------------------------------------------------------------------
 
 # Recalculate price per 100g protein from raw data (don't trust the CSV column)
-df["price_per_100g_protein"] = (df["price_per_kg"] / 10) / (df["protein_per_100g"] / 100)
+df["price_per_100g_protein"] = (df["price_per_kg"] / 10) / (df["protein_per_100g"] / 100).round(2)
 
 # Value score: composite 0-100, higher = better value
 # Equally weights protein density and cost efficiency, both normalised 0-1
@@ -177,17 +177,115 @@ layout = go.Layout(
 # ---------------------------------------------------------------------------
 # Assemble figure and export
 # ---------------------------------------------------------------------------
-
+ 
 fig = go.Figure(data=traces, layout=layout)
+ 
+# ---------------------------------------------------------------------------
+# Build table
+# ---------------------------------------------------------------------------
+# select only the columns we want to show — not all of them
+display_df = df[["product", "category", "protein_per_100g", "price_per_kg", "price_per_100g_protein", "value_score"]].copy()
+# rename to human-readable headers
+display_df.columns = ["Product", "Category", "Protein (g/100g)", "Price (€/kg)", "€ per 100g protein", "Value score"]
+# default sort: cheapest protein first
+display_df = display_df.sort_values("€ per 100g protein")
 
-OUTPUT_HTML.parent.mkdir(parents=True, exist_ok=True)
+# index=False: don't show the row numbers pandas adds by default
+# classes="product-table": adds a CSS class so DataTables can find it
+# border=0: no old-school HTML table border attribute
+table_html = display_df.to_html(index=False, classes="product-table", border=0)
 
-fig.write_html(
-    OUTPUT_HTML,
+
+# ---------------------------------------------------------------------------
+# Build full HTML page
+# ---------------------------------------------------------------------------
+
+chart_div = fig.to_html(
+    full_html=False,
     include_plotlyjs=PLOTLYJS,
-    full_html=True,
     config={"responsive": True},
 )
+
+page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vegan Protein per Euro</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <style>
+    body {{
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px 40px;
+      background: #fafafa;
+      color: #333;
+    }}
+    h1 {{
+      font-size: 1.8em;
+      margin-bottom: 4px;
+    }}
+    .subtitle {{
+      color: #888;
+      font-size: 0.95em;
+      margin-bottom: 24px;
+    }}
+    .chart-container {{
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 40px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }}
+    .table-container {{
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }}
+    h2 {{
+      font-size: 1.2em;
+      margin-bottom: 16px;
+    }}
+    table.product-table {{
+      width: 100%;
+      font-size: 0.9em;
+    }}
+  </style>
+</head>
+<body>
+
+  <h1>🌱 Plant-based Protein per Euro</h1>
+  <p class="subtitle">Plant-based protein sources compared by protein density and cost — Finland</p>
+
+  <div class="chart-container">
+    {chart_div}
+  </div>
+
+  <div class="table-container">
+    <h2>All products</h2>
+    {table_html}
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function() {{
+      $(".product-table").DataTable({{
+        pageLength: 25,
+        order: [[4, "asc"]],
+        columnDefs: [{{ targets: [2, 3, 4, 5], className: "dt-right" }}]
+      }});
+    }});
+  </script>
+
+</body>
+</html>"""
+
+OUTPUT_HTML.parent.mkdir(parents=True, exist_ok=True)
+ 
+with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
+    f.write(page)
 
 mode = "deploy (CDN)" if DEPLOY else "local (bundled JS)"
 print(f"Chart written to {OUTPUT_HTML} [{mode}]")
