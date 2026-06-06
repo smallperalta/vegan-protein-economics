@@ -71,8 +71,9 @@ To enable GitHub Pages on a fork: go to *Settings → Pages → Source → Deplo
 - [ ] Consider migrating to **Streamlit** for richer interactivity (search, filters, dynamic sorting)
 - [ ] Add category-level average markers to the chart
 - [ ] Contributor guide for community submissions
-- [ ] Consider other macros (maybe mainly FAT)
+- [ ] Consider other macros. Maybe fat, fiber, calcium, salt?
 - [ ] Consider the language being in English
+
 
 ---
 

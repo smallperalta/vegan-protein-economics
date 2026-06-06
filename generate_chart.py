@@ -49,7 +49,7 @@ df = pd.read_csv(INPUT_CSV, sep=";")
 # Rename columns to clean internal names
 df.columns = [
     "product", "category", "package_size_g", "protein_in_package_g",
-    "price_per_kg", "protein_per_100g", "price_per_100g_protein_raw"
+    "price_per_kg", "protein_per_100g", "price_per_100g_protein_raw", "url"
 ]
 
 # Drop rows with missing values in key columns
@@ -60,8 +60,8 @@ df = df.dropna(subset=["product", "category", "protein_per_100g", "price_per_kg"
 # ---------------------------------------------------------------------------
 
 # Recalculate price per 100g protein from raw data (don't trust the CSV column)
-df["price_per_100g_protein"] = (df["price_per_kg"] / 10) / (df["protein_per_100g"] / 100).round(2)
-
+df["price_per_100g_protein"] = (df["price_per_kg"] / 10) / (df["protein_per_100g"] / 100)
+df["price_per_100g_protein"] = df["price_per_100g_protein"].round(2)
 # Value score: composite 0-100, higher = better value
 # Equally weights protein density and cost efficiency, both normalised 0-1
 max_protein = df["protein_per_100g"].max()
@@ -184,16 +184,22 @@ fig = go.Figure(data=traces, layout=layout)
 # Build table
 # ---------------------------------------------------------------------------
 # select only the columns we want to show — not all of them
-display_df = df[["product", "category", "protein_per_100g", "price_per_kg", "price_per_100g_protein", "value_score"]].copy()
+display_df = df[["product", "category", "protein_per_100g", "price_per_kg", "price_per_100g_protein", "url"]].copy()
+# Add clickable link column
+display_df["url"] = display_df["url"].apply(
+    lambda u: f'<a href="{u}" target="_blank">link</a>' if pd.notna(u) and u != "" else ""
+)
 # rename to human-readable headers
-display_df.columns = ["Product", "Category", "Protein (g/100g)", "Price (€/kg)", "€ per 100g protein", "Value score"]
+display_df.columns = ["Product", "Category", "Protein (g/100g)", "Price (€/kg)", "€ per 100g protein", "URL"]
 # default sort: cheapest protein first
 display_df = display_df.sort_values("€ per 100g protein")
+
 
 # index=False: don't show the row numbers pandas adds by default
 # classes="product-table": adds a CSS class so DataTables can find it
 # border=0: no old-school HTML table border attribute
-table_html = display_df.to_html(index=False, classes="product-table", border=0)
+# escape=False: so the <a> tags render as real links, not as text
+table_html = display_df.to_html(index=False, classes="product-table", border=0, escape=False)
 
 
 # ---------------------------------------------------------------------------
@@ -255,14 +261,18 @@ page = f"""<!DOCTYPE html>
 </head>
 <body>
 
-  <h1>🌱 Plant-based Protein per Euro</h1>
-  <p class="subtitle">Plant-based protein sources compared by protein density and cost — Finland</p>
+  <h1>Plant-based Protein per Euro</h1>
+  <p class="subtitle">Vegan protein sources compared by protein density and cost — Finland</p>
 
   <div class="chart-container">
     {chart_div}
   </div>
 
   <div class="table-container">
+  <p style="color:#888; font-size:0.85em;">
+    ⚠️ Prices and nutritional values are approximate and may vary by store and date. 
+    Always check the product label.
+  </p>
     <h2>All products</h2>
     {table_html}
   </div>

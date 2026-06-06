@@ -1,37 +1,47 @@
-product;category;package_size_g;protein_in_package_g;price_per_kg_eur;protein_per_100g;price_per_100g_protein
-Chickpeas - GoGreen Luomu Kikherneet;Legumes;380;26.22;6.5;6.9;9.4
-Dry red lentils - GoGreen;Legumes;400;104;5;26;1.9
-Dry Green Lentils;Legumes;400;104;7.9;26;3
-Dry Green Lentils - Impolan kasvitus;Legumes;350;26;12.6;26;4.8
-GoGreen Mustapavut 380g;Legumes;380;28.12;6.7;7.4;9.1
-Elovena kauraisa proteiinigranola;Cereals & granola;300;60;19.7;20;9.9
-Fazer Alku Paahdettu Mysli Metsämarja;Cereals & granola;375;45;13.31;12;11.1
-K-Menu Crunchy Mysli;Cereals & granola;750;67.5;3.45;9;3.8
-SoFine tofu maustamaton luomu;Soy products;250;32.5;6.72;13;5.2
-Rainbow tofu luomu;Soy products;200;24;4.85;12;4
-Jalotofu kylmäsavu;Soy products;300;48;10;16;6.3
-Tofumoon Tempe;Soy products;250;47.5;11.9;19;6.3
-Gold&Green Delikaura Grillattu tomaatti;Meat substitutes;230;55.2;14.1;24;5.9
-Gold&Green Härkis kaurajauhis;Meat substitutes;225;38.25;16.5;17;9.7
-MUU Kasvipohjainen Roast Biif;Meat substitutes;100;28;32.8;28;11.7
-Makuliha Makukeittiön Kasvislauantai;Meat substitutes;120;12;19;9;21.1
-MUU Vebablastu;Meat substitutes;200;50;13.4;25;5.4
-MUU Mehevä Burgerpihvi;Meat substitutes;200;24;17.95;12;15
-MUU Jauhis kasvispohjainen;Meat substitutes;280;42;13.18;15;8.8
-Vöner Original Lastu;Meat substitutes;200;62;19.85;31;6.4
-Hälsans Kök Vegesuikaleet;Meat substitutes;420;94.5;15.38;22.5;6.8
-Pirkka Vege soijarouhe sitruuna & pippuri;Meat substitutes;110;13.2;18;12;15
-Peanut Butter;Nuts & seeds;340;90;8.1;26.5;3.1
-Xtra Kuoritut Saksanpähkinät;Nuts & seeds;300;36;14.5;12;12.1
-Coop Maapähkinä Suolaamaton;Nuts & seeds;250;62.5;3.92;25;1.6
-Xtra Cashewpähkinät Natural;Nuts & seeds;500;95;13;19;6.8
-VegeSun Tumma soijarouhe;Soy products;500;265;6.16;53;1.2
-VegeSun Vaalea soijarouhe;Soy products;500;265;7.18;53;1.4
-Alpro Protein milk;Dairy substitutes;1000;50;3.35;5;6.7
-Alpro High Protein banaani-keksi soijavalmiste;Dairy substitutes;200;15;8.55;7.5;11.4
-Alpro Protein proteiinivanukas karamelli;Dairy substitutes;200;20;9.45;10;9.5
-K-Menu pitkäjyväinen riisi;Grains;1000;75;1.9;7.5;2.5
-Nalle Pikakaurahiutale;Cereals & granola;500;70;3.16;14;2.3
-Oululainen Hapankorppu;Bread;200;24;9.9;12;8.3
-Vaasan Taika Täysjyväkauraviipaleet;Bread;550;66;4.07;12;3.4
-Protein powder;Protein supplement;1000;840;22;84;2.6
+product;category;package_size_g;protein_in_package_g;price_per_kg_eur;protein_per_100g;price_per_100g_protein;url
+Chickpeas - GoGreen Luomu Kikherneet;Legumes;380;26.22;6.5;6.9;9.4;https://www.s-kaupat.fi/tuote/gogreen-luomu-kikherneet-380g/7310130009822
+Dry red lentils - GoGreen;Legumes;400;104;5;26;1.9;https://www.s-kaupat.fi/tuote/gogreen-punaiset-linssit-380g/7310130009716
+Dry Green Lentils;Legumes;400;104;7.9;26;3;https://www.s-kaupat.fi/tuote/gogreen-vihreat-linssit-400-g/7312787710199
+Dry Green Lentils - Impolan kasvitus;Legumes;350;26;12.6;26;4.8; 
+GoGreen Mustapavut 380g;Legumes;380;28.12;6.7;7.4;9.1;https://www.s-kaupat.fi/tuote/gogreen-mustapavut-380g/7310130009839
+OTHER DRY BEANS
+
+Elovena kauraisa proteiinigranola;Cereals & granola;300;60;19.7;20;9.9;https://www.s-kaupat.fi/tuote/elovena-300g-kauraisa-proteiinigranola/6411200006152
+Fazer Alku Paahdettu Mysli Metsämarja;Cereals & granola;375;45;13.31;12;11.1;https://www.s-kaupat.fi/tuote/fazer-alku-metsamarja-paahdettu-mysli-375-g/6419811117205
+K-Menu Crunchy Mysli;Cereals & granola;750;67.5;3.45;9;3.8;
+SoFine tofu maustamaton luomu;Soy products;250;32.5;6.72;13;5.2;https://www.s-kaupat.fi/tuote/sofine-tofu-maustamaton-luomu-250g/8718885890006
+Coop Eko tofu luomu;Soy products;200;30;4.85;15;000;https://www.s-kaupat.fi/tuote/coop-eko-tofu-luomu-200-g/7340191186446
+Rainbow tofu luomu;Soy products;200;24;4.85;12;4;
+Jalotofu kylmäsavu;Soy products;300;48;10;16;6.3;https://www.s-kaupat.fi/tuote/jalotofu-kylmasavu-300g-luomu/6416419131244
+Tofumoon Tempe;Soy products;250;47.5;11.9;19;6.3;
+Gold&Green Delikaura Grillattu tomaatti;Meat substitutes;230;55.2;14.1;24;5.9;https://www.s-kaupat.fi/tuote/goldandgreenr-delikaurar-230-g-grillattu-tomaatti/6408430347605
+Gold&Green Härkis kaurajauhis;Meat substitutes;225;38.25;16.5;17;9.7;https://www.s-kaupat.fi/tuote/goldandgreenr-harkisr-kaurajauhis-225-g/6408430360529
+MUU Kasvipohjainen Roast Biif;Meat substitutes;100;28;32.8;28;11.7;https://www.s-kaupat.fi/tuote/muu-kasvipohjainen-roast-biif-100-g/6430078144841
+Makuliha Makukeittiön Kasvislauantai;Meat substitutes;120;12;19;9;21.1;https://www.s-kaupat.fi/tuote/makutila-kasvislauantai-120-g/6405053008418
+MUU Vebablastu;Meat substitutes;200;50;13.4;25;5.4;https://www.s-kaupat.fi/tuote/muu-vebablastu-200-g/6430078140874
+MUU Mehevä Burgerpihvi;Meat substitutes;200;24;17.95;12;15;https://www.s-kaupat.fi/tuote/muu-meheva-burgerpihvi-200-g/6430078149709
+https://www.s-kaupat.fi/tuote/muu-grilletti-270-g/6430078148290
+Other burgers
+
+MUU Jauhis kasvispohjainen;Meat substitutes;280;42;13.18;15;8.8;https://www.s-kaupat.fi/tuote/muu-jauhis-280-g/6430078140300
+Vöner Original Lastu;Meat substitutes;200;62;19.85;31;6.4;https://www.s-kaupat.fi/tuote/voner-original-lastu-200g/6430069070548
+Hälsans Kök Vegesuikaleet;Meat substitutes;420;94.5;15.38;22.5;6.8;https://www.s-kaupat.fi/tuote/halsans-kok-420g-vegesuikaleet/8445291885356
+Pirkka Vege soijarouhe sitruuna & pippuri;Meat substitutes;110;13.2;18;12;15;
+Peanut Butter;Nuts & seeds;340;90;8.1;26.5;3.1;
+Xtra Kuoritut Saksanpähkinät;Nuts & seeds;300;36;14.5;12;12.1;
+Coop Maapähkinä Suolaamaton;Nuts & seeds;250;62.5;3.92;25;1.6;
+Xtra Cashewpähkinät Natural;Nuts & seeds;500;95;13;19;6.8;
+VegeSun Tumma soijarouhe;Soy products;500;265;6.16;53;1.2;
+VegeSun Vaalea soijarouhe;Soy products;500;265;7.18;53;1.4;
+Alpro Protein milk;Dairy substitutes;1000;50;3.35;5;6.7;
+Alpro High Protein banaani-keksi soijavalmiste;Dairy substitutes;200;15;8.55;7.5;11.4;
+Alpro Protein proteiinivanukas karamelli;Dairy substitutes;200;20;9.45;10;9.5;
+K-Menu pitkäjyväinen riisi;Grains;1000;75;1.9;7.5;2.5;
+Nalle Pikakaurahiutale;Cereals & granola;500;70;3.16;14;2.3;
+Oululainen Hapankorppu;Bread;200;24;9.9;12;8.3;
+Vaasan Taika Täysjyväkauraviipaleet;Bread;550;66;4.07;12;3.4;
+Protein powder;Protein supplement;1000;840;22;84;2.6;
+PROTEIN BAR
+PROTEIN SMOOTHIE
+
+;;;;;;;https://www.s-kaupat.fi/tuote/yipin-tempeh-teriyaki-200g/7332040323218
