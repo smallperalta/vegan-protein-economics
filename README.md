@@ -1,6 +1,6 @@
 # Vegan Protein per Euro (for Finnish products)
 
-A visual guide to the best-value plant-based protein sources: comparing protein density against cost across categories like legumes, soy foods, nuts, and more.
+A visual guide to the best-value plant-based protein sources: comparing protein density against cost across categories like legumes, soy foods, nuts, etc.
 
 🔗 **[View the chart →](https://smallperalta.github.io/vegan-protein-economics/)**
 
@@ -10,8 +10,8 @@ A visual guide to the best-value plant-based protein sources: comparing protein 
 
 - **X axis** — grams of protein per 100g of product (higher = more protein-dense)
 - **Y axis** — euros per 100g of protein (lower = cheaper protein)
-- **Bottom-right quadrant** (green zone) — high protein density *and* low cost: the best value zone
-- Click category names in the legend to show or hide them
+- **Bottom-right quadrant** high protein density *and* low cost: the best value zone
+- Click category names in the legend to show or hide them, double click to isolate it
 
 ---
 
@@ -35,12 +35,10 @@ vegan-protein-economics/
 Open `data/protein_foods.csv` and add a row following this format:
 
 ```
-Product;Category;Package size (g);Protein in package (g);Price per kg (€);Protein per 100g;Price per 100g of protein
+Product;Category;Package size (g);Protein in package (g);Price per kg (€);Protein per 100g;URL
 ```
 
-**Categories in use:** Legumes, Muesli & granola, Soy foods, Plant meat, Nuts & seeds, Textured soy protein, Plant dairy, Grain products, Protein supplement
-
-> Tip: *Price per 100g of protein* = `(Price per kg / 10) / (Protein per 100g / 100)` — or just let the script recalculate it if you add that feature.
+**Categories in use:** Legumes, Cereal & granola, Soy products, Meat substitutes, Nuts & seeds, Dairy substitutes, Grains, Bread, Protein supplements
 
 ---
 
@@ -73,6 +71,8 @@ To enable GitHub Pages on a fork: go to *Settings → Pages → Source → Deplo
 - [ ] Contributor guide for community submissions
 - [ ] Consider other macros. Maybe fat, fiber, calcium, salt?
 - [ ] Consider the language being in English
+- [ ] Add meat to compare?
+
 
 
 ---

@@ -127,7 +127,9 @@ for i, cat in enumerate(categories):
 # ---------------------------------------------------------------------------
 
 layout = go.Layout(
-    title=dict(text="Plant based products: protein density vs price", x=0.5),
+    #title=dict(text="Plant based products: protein density vs price", x=0.5),
+    title=None,
+    margin=dict(t=30),
     xaxis=dict(
         title=dict(text="Protein (g per 100g)", standoff=15),
         range=[x_min, x_max],
@@ -261,8 +263,8 @@ page = f"""<!DOCTYPE html>
 </head>
 <body>
 
-  <h1>Plant-based Protein per Euro</h1>
-  <p class="subtitle">Vegan protein sources compared by protein density and cost — Finland</p>
+  <h1>Plant-based Protein per Euro: are you spending your money wisely?</h1>
+  <p class="subtitle">Finnish plant-based products, compared by cost and protein density. Hover over the dots to get more info.</p>
 
   <div class="chart-container">
     {chart_div}
