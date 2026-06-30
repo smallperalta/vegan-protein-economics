@@ -2,7 +2,7 @@
 
 A visual guide to the best-value plant-based protein sources: comparing protein density against cost across categories like legumes, soy foods, nuts, etc.
 
-🔗 **[View the chart →](https://smallperalta.github.io/vegan-protein-economics/)**
+🔗 **[View the chart →](https://estaniporta.github.io/vegan-protein-economics/)**
 
 ---
 

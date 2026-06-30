@@ -304,7 +304,7 @@ print(f"Chart written to {OUTPUT_HTML} [{mode}]")
 print(f"  {len(df)} products across {len(categories)} categories")
 if DEPLOY:
     print("\n  Live site (after push):")
-    print("  https://smallperalta.github.io/vegan-protein-economics/")
+    print("  https://estaniporta.github.io/vegan-protein-economics/")
 else:
     print("\n  To view locally:")
     print("  open docs/index.html")
